@@ -12,9 +12,9 @@
       --primary-green: #15803d;
       --light-green: #f0fdf4;
       --card-bg: #ffffff;
+      --border-color: #bbf7d0;
       --text-main: #14532d;
       --text-sub: #4b5563;
-      --border-color: #bbf7d0;
     }
 
     * {
@@ -26,61 +26,89 @@
 
     body {
       background-color: var(--light-green);
-      color: var(--text-main);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 12px;
+      padding: 16px 8px;
       min-height: 100vh;
     }
 
     .container {
       width: 100%;
-      max-width: 1000px;
+      max-width: 920px; /* ডানে K কলাম পর্যন্ত সীমাবদ্ধ রাখতে */
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
+    /* হেডার ও হোম বাটন */
     header {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      padding: 16px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(21, 128, 61, 0.05);
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(21, 128, 61, 0.05);
     }
 
-    header h1 {
-      font-size: 22px;
+    .header-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-titles h1 {
+      font-size: 19px;
       font-weight: 700;
       color: var(--primary-green);
+      line-height: 1.2;
     }
 
-    header p {
-      font-size: 13px;
-      color: var(--text-sub);
-      margin-top: 4px;
-    }
-
-    .status-badge {
+    .badge {
       display: inline-block;
-      margin-top: 6px;
-      padding: 2px 10px;
+      margin-top: 4px;
+      padding: 2px 8px;
       background: #dcfce7;
       color: #166534;
       border-radius: 999px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
+      width: fit-content;
     }
 
+    /* ছোট হোম বাটন */
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      background-color: #ffffff;
+      color: var(--primary-green);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .home-btn:hover {
+      background-color: var(--primary-green);
+      color: #ffffff;
+      border-color: var(--primary-green);
+    }
+
+    /* রো ২০ ও কলাম K সাইজের ফ্রেম */
     .frame-wrapper {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 14px rgba(21, 128, 61, 0.08);
-      height: 520px; /* অতিরিক্ত ফাঁকা অংশ কমাতে হাইট নিয়ন্ত্রিত রাখা হয়েছে */
+      height: 490px;
+      position: relative;
     }
 
     iframe {
@@ -90,10 +118,41 @@
       display: block;
     }
 
+    /* ফুটার ও দরকারি লিংক */
     footer {
-      text-align: center;
-      font-size: 12px;
-      color: #6b7280;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-sub);
+      box-shadow: 0 2px 8px rgba(21, 128, 61, 0.04);
+    }
+
+    .footer-links, .footer-contact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    footer a {
+      color: var(--primary-green);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .separator {
+      color: #cbd5e1;
     }
   </style>
 </head>
@@ -101,20 +160,33 @@
 
   <div class="container">
     <header>
-      <h1>মেস খরচ ও হিসাব খাতা</h1>
-      <p>লাইভ ডেটাসহ সবকটি শিটের বিস্তারিত নিচে দেওয়া হলো</p>
-      <span class="status-badge">● অটো আপডেট সক্রিয়</span>
+      <div class="header-titles">
+        <h1>মেস খরচ ও হিসাব খাতা</h1>
+        <span class="badge">● লাইভ শিট ভিউ</span>
+      </div>
+      <a href="https://ekramulhaque.live" class="home-btn" title="মূল ওয়েবসাইটে যান">
+        ⌂ Home
+      </a>
     </header>
 
     <div class="frame-wrapper">
       <iframe 
-        src="https://1drv.ms/x/c/5cfc7176d4a0dfdc/IQAfWBCV0xSCRZeb6GbWwlsyARCj_SmIutzujVet5f2DzuI?e=nAKo2g&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdDownloadButton=False"
+        src="https://1drv.ms/x/c/5cfc7176d4a0dfdc/IQAfWBCV0xSCRZeb6GbWwlsyARCj_SmIutzujVet5f2DzuI?e=nAKo2g&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdDownloadButton=False&ActiveCell=A1" 
         scrolling="no">
       </iframe>
     </div>
 
     <footer>
-      নিচের শিট ট্যাবগুলোতে ক্লিক করে অন্যান্য মাসের হিসাব দেখতে পারেন
+      <div class="footer-links">
+        <span>দরকারী লিংক:</span>
+        <a href="https://kuja.org.bd" target="_blank" rel="noopener noreferrer">kuja.org.bd</a>
+      </div>
+      <div class="footer-contact">
+        <span>যোগাযোগ:</span>
+        <a href="mailto:contact@ekramulhaque.live">contact@ekramulhaque.live</a>
+        <span class="separator">|</span>
+        <a href="mailto:ekramulhaque@kuja.org.bd">ekramulhaque@kuja.org.bd</a>
+      </div>
     </footer>
   </div>
 
